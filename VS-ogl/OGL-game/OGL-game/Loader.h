@@ -1,6 +1,9 @@
 #pragma once
 #include "RawModel.h"
 #include "GL/glew.h"
+#include <SDL.h>
+#include <GL\GL.h>
+#include <SDL_image.h>
 #include <vector>
 
 class Loader
@@ -10,6 +13,9 @@ public:
 	~Loader();
 	void StoreDataInAttribbuteList(int attributenumber, const float*data,const long numpoints);
 	RawModel LoadToVAO(const float*postions, const long numpoints, const GLuint * indices, const long numIndices);
+	GLuint loadTexture(std::string fileName);
+
+
 private:
 	GLuint createVao();
 	void UnbindVao();
@@ -21,6 +27,7 @@ private:
 	std::vector<GLuint> indexBuffer;
 	std::vector<GLuint> vaoList;
 	std::vector<GLuint> vboList;
+	std::vector<GLuint> textureList;
 	
 };
 

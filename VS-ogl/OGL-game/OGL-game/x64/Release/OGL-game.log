@@ -1,11 +1,13 @@
-﻿  OGL-game.cpp
+﻿  Loader.cpp
+Loader.cpp(103): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+Loader.cpp(104): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+Loader.cpp(105): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  OGL-game.cpp
   gamePanel.cpp
-  shaderProgramme.cpp
-  staticShader.cpp
   Generating code
-  63 of 383 functions (16.4%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    20 functions had inline decision re-evaluated but remain unchanged
+  13 of 387 functions ( 3.4%) were compiled, the rest were copied from previous compilation.
+    4 functions were new in current compilation
+    6 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   OGL-game.vcxproj -> C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\x64\Release\OGL-game.exe
   OGL-game.vcxproj -> C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\x64\Release\OGL-game.pdb (Full PDB)

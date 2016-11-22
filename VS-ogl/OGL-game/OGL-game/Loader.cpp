@@ -4,6 +4,14 @@
 
 Loader::Loader()
 {
+	// load support for the JPG and PNG image formats
+	int flags = IMG_INIT_JPG | IMG_INIT_PNG;
+	int initted = IMG_Init(flags);
+	if ((initted&flags) != flags) {
+		printf("IMG_Init: Failed to init required jpg and png support!\n");
+		printf("IMG_Init: %s\n", IMG_GetError());
+		// handle error
+	}
 }
 RawModel Loader::LoadToVAO(const float*postions, const long numpoints,const GLuint * indices, const long numIndices ){
 	int vaoID = createVao();
@@ -13,6 +21,32 @@ RawModel Loader::LoadToVAO(const float*postions, const long numpoints,const GLui
 	return RawModel(vaoID, numIndices);
 
 
+}
+GLuint Loader::loadTexture(std::string fileName) {
+	
+	GLuint TextureID = 0;
+
+	// You should probably use CSurface::OnLoad ... ;)
+	//-- and make sure the Surface pointer is good!
+	SDL_Surface* Surface = IMG_Load("someimage.jpg");
+
+	glGenTextures(1, &TextureID);
+	glBindTexture(GL_TEXTURE_2D, TextureID);
+
+	int Mode = GL_RGB;
+
+	if (Surface->format->BytesPerPixel == 4) {
+		Mode = GL_RGBA;
+	}
+
+	glTexImage2D(GL_TEXTURE_2D, 0, Mode, Surface->w, Surface->h, 0, Mode, GL_UNSIGNED_BYTE, Surface->pixels);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	
+	
+	textureList.push_back(TextureID);
+	return TextureID;
 }
 
 GLuint Loader::createVao() {
@@ -68,7 +102,10 @@ Loader::~Loader()
 {
 	glDeleteVertexArrays(vaoList.size(), vaoList.data());
 	glDeleteBuffers(vboList.size(), vboList.data());
-
+	glDeleteTextures(textureList.size(), textureList.data());
+	
+	
+	IMG_Quit();
 
 
 
