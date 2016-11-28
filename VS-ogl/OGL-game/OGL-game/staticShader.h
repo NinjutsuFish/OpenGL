@@ -8,8 +8,12 @@ class staticShader :
 {
 public:
 	staticShader() :shaderProgramme(vertex_FileName, fragment_FileName) { init(); }
-
+	//uniform mat4 transformationMatrix important <<<|||>>>>
 	~staticShader(); 
 	void BindAttributes();
+	void getAlluniformLocations();
+	void loadTransformationMatrix(glm::mat4 matrix) { LoadMatrix(loc_transformationMatrix, matrix); }
+private:
+	GLuint loc_transformationMatrix;
 };
 

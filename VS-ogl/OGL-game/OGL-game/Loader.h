@@ -5,18 +5,43 @@
 #include <GL\GL.h>
 #include <SDL_image.h>
 #include <vector>
+#include <iostream>
+#include <fstream>
 
 class Loader
 {
 public:
 	Loader();
 	~Loader();
-	void StoreDataInAttribbuteList(int attributenumber, const float*data,const long numpoints);
-	RawModel LoadToVAO(const float*postions, const long numpoints, const GLuint * indices, const long numIndices);
+	void StoreDataInAttribbuteList(int attributenumber, const float*data,const long numpoints,int numpointer);
+	RawModel LoadToVAO(const float*postions, const long numpoints,
+		const GLuint * indices, const long numIndices,
+		const GLfloat *texcoords, const long numtexpoint);
 	GLuint loadTexture(std::string fileName);
 
 
+
 private:
+	
+	std::string ResourcePath(std::string FilePath) {
+		
+		std::fstream hFile;
+		std::string nfilepath = "Resource/";
+		
+		//search for file by going up file directory tree up to 5 times
+		int attempts = 0;
+		nfilepath = nfilepath + FilePath;
+		hFile.open(nfilepath.c_str(), std::ios::in);
+		while (!hFile.is_open() && attempts < 5) {
+			nfilepath = "../" + nfilepath;
+			attempts += 1;
+			hFile.open(nfilepath.c_str(), std::ios::in);
+		}
+
+		hFile.close();
+
+		return nfilepath;
+	}
 	GLuint createVao();
 	void UnbindVao();
 	void * storeDataInBuffer(const float *positions, const long numPoints);

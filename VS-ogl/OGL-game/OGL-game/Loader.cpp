@@ -13,10 +13,11 @@ Loader::Loader()
 		// handle error
 	}
 }
-RawModel Loader::LoadToVAO(const float*postions, const long numpoints,const GLuint * indices, const long numIndices ){
+RawModel Loader::LoadToVAO(const float*postions, const long numpoints,const GLuint * indices, const long numIndices,const GLfloat *texcoords, const long numtexpoint) {
 	int vaoID = createVao();
 	bindIndicesBuffer(indices, numIndices);
-	StoreDataInAttribbuteList(0, postions, numpoints);
+	StoreDataInAttribbuteList(0, postions, numpoints,3);
+	StoreDataInAttribbuteList(1, texcoords, numtexpoint,2);
 	UnbindVao();
 	return RawModel(vaoID, numIndices);
 
@@ -28,7 +29,7 @@ GLuint Loader::loadTexture(std::string fileName) {
 
 	// You should probably use CSurface::OnLoad ... ;)
 	//-- and make sure the Surface pointer is good!
-	SDL_Surface* Surface = IMG_Load("someimage.jpg");
+	SDL_Surface* Surface = IMG_Load(ResourcePath(fileName).c_str());
 
 	glGenTextures(1, &TextureID);
 	glBindTexture(GL_TEXTURE_2D, TextureID);
@@ -61,12 +62,12 @@ GLuint Loader::createVao() {
 void Loader::UnbindVao() {
 	glBindVertexArray(0);
 }
-void Loader::StoreDataInAttribbuteList(int attributenumber, const float*data, const long numpoints) {
+void Loader::StoreDataInAttribbuteList(int attributenumber, const float*data, const long numpoints,int numpointer) {
 	GLuint vboID[1];
 	glGenBuffers(1, (GLuint *)&vboID);
 	glBindBuffer(GL_ARRAY_BUFFER,vboID[0]);
 	glBufferData(GL_ARRAY_BUFFER,numpoints*sizeof(float), storeDataInBuffer(data, numpoints), GL_STATIC_DRAW);
-	glVertexAttribPointer(attributenumber, 3, GL_FLOAT, false, 0, 0);
+	glVertexAttribPointer(attributenumber, numpointer, GL_FLOAT, false, 0, 0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	vboList.push_back(vboID[0]);
 	

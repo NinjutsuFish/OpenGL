@@ -14,6 +14,7 @@ void shaderProgramme::init(void) {
 	BindAttributes();
 	glLinkProgram(programID);
 	glValidateProgram(programID);
+	getAlluniformLocations();
 
 }
 
@@ -44,9 +45,9 @@ int shaderProgramme::shaderFromFile(const std::string filePath, GLenum shaderTyp
 	std::cout << "FILE NAME IS : " << filePath << std::endl;
 	std::ifstream f;
 	f.open(filePath.c_str(),std::ios::in);
-	//if (!f.is_open()) {
-	//	throw std::runtime_error(std::string("Failed to open file: ") + filePath);
-	//}
+	if (!f.is_open()) {
+	throw std::runtime_error(std::string("Failed to open file: ") + filePath);
+	}
 
 
 	//read whole file into stringstream buffer

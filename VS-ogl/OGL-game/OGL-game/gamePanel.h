@@ -7,6 +7,10 @@
 #include"staticShader.h"
 #include "RawModel.h"
 #include "Renderer.h"
+#include "modelTexture.h"
+#include "texturedModel.h"
+#include "Entity.h"
+#include "glm\vec3.hpp"
 class gamePanel
 
 
@@ -15,6 +19,8 @@ public:
 	gamePanel();
 	~gamePanel();
 private:
+	modelTexture texture;
+	texturedModel texmodel;
 	int bob;
 	//set screen width and height const === cannot be changed...
 	const int ScreenWidth=640;
@@ -41,6 +47,7 @@ private:
 	Renderer render;
 	RawModel raw;
 	staticShader * myshader;
+	Entity myEntity;
 
 
 };

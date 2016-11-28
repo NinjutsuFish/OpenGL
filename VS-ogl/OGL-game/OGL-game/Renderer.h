@@ -1,6 +1,13 @@
 #pragma once
 #include <GL\glew.h>
+#include "Math.h"
+#include "glm/mat4x4.hpp"
+#include "Renderer.h"
+#include "Entity.h"
+#include "staticShader.h"
+#include "texturedModel.h"
 #include "RawModel.h"
+
 class Renderer
 {
 public:
@@ -10,7 +17,7 @@ public:
 		glClearColor(0.f, 255.f, 100.f, 1.f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
-	void render(RawModel model);
+	void render(Entity myEntity, staticShader * Shader);
 private:
 };
 

@@ -7,9 +7,10 @@
 class modelTexture
 {
 public:
-	modelTexture(GLuint texturenum);
-	~modelTexture();
+	modelTexture(GLuint texturenum) { textureID = texturenum; }
+	~modelTexture() {};
 	GLuint getID() { return textureID; }
+	modelTexture() {};
 
 private:
 	GLuint textureID;

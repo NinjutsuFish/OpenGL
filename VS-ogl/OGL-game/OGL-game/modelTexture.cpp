@@ -4,7 +4,7 @@
 
 modelTexture::modelTexture(GLuint texturenum)
 {
-	textureID = textureID;
+	textureID = texturenum;
 }
 
 

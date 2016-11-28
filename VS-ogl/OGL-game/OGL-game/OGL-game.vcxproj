@@ -43,11 +43,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\SDL2-2.0.5\include;C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\glew-2.0.0\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\OGL-game\glm;C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\SDL2-2.0.5\include;C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\glew-2.0.0\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\glew-2.0.0\lib\Release\x64;C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\SDL2-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\SDL2-2.0.5\include;C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\glew-2.0.0\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\OGL-game\glm;C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\SDL2-2.0.5\include;C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\glew-2.0.0\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\glew-2.0.0\lib\Release\x64;C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\SDL2-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
     <ReferencePath>C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\glew-2.0.0\include;C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\SDL2-2.0.5\include;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
@@ -89,8 +89,10 @@
     <Text Include="vertexShader.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="gamePanel.h" />
     <ClInclude Include="Loader.h" />
+    <ClInclude Include="Math.h" />
     <ClInclude Include="modelTexture.h" />
     <ClInclude Include="RawModel.h" />
     <ClInclude Include="Renderer.h" />
@@ -98,11 +100,12 @@
     <ClInclude Include="staticShader.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="texturedModel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="gamePanel.cpp" />
     <ClCompile Include="Loader.cpp" />
-    <ClCompile Include="modelTexture.cpp" />
+    <ClCompile Include="Math.cpp" />
     <ClCompile Include="OGL-game.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="shaderProgramme.cpp" />
