@@ -13,7 +13,9 @@ public:
 	void BindAttributes();
 	void getAlluniformLocations();
 	void loadTransformationMatrix(glm::mat4 matrix) { LoadMatrix(loc_transformationMatrix, matrix); }
+	void loadprojectionMatrix(glm::mat4 matrix) { LoadMatrix(loc_projectionMatrix, matrix); }
 private:
 	GLuint loc_transformationMatrix;
+	GLuint loc_projectionMatrix;
 };
 

@@ -117,16 +117,15 @@ void gamePanel::init() {
 			
 			//shader last!!!
 			myshader = new staticShader();
-			myEntity = Entity(texmodel, glm::vec3(-1, 0, 0), 0, 0, 0, 1);
+			render = Renderer(myshader);
+			myEntity = Entity(texmodel, glm::vec3(0, 0, -1), 0, 0, 0, 1);
 		}
 	}
 
 }
 //creation of render and update game....
 void gamePanel::updateGame() {
-	myEntity.IncreasePosition(0.002, 0, 0);
-	myEntity.IncreaseRotation(0.4, 0.4, 0.5);
-	myEntity.IncreaseScale(-0.001);
+	myEntity.IncreasePosition(0, 0, -0.02);
 	
 }
 void gamePanel::renderGame() {

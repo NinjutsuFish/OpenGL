@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _included_gamePanel
+#define _included_gamePanel
 
 #include <stdlib.h>
 #include <SDL.h>
@@ -11,6 +13,8 @@
 #include "texturedModel.h"
 #include "Entity.h"
 #include "glm\vec3.hpp"
+#define ScreenWidth	640
+#define ScreenHeight	480
 class gamePanel
 
 
@@ -23,8 +27,7 @@ private:
 	texturedModel texmodel;
 	int bob;
 	//set screen width and height const === cannot be changed...
-	const int ScreenWidth=640;
-	const int ScreenHeight=480;
+	
 	//the winow handle
 	SDL_Window* window;
 	//surface within window for drawing...
@@ -52,3 +55,4 @@ private:
 
 };
 
+#endif // _included_gamePanel

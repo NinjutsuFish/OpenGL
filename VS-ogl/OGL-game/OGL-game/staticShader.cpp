@@ -9,6 +9,7 @@ void staticShader::BindAttributes() {
 }
 void staticShader::getAlluniformLocations() {
 	loc_transformationMatrix = getUniformLocation("transformationMatrix");
+	loc_projectionMatrix = getUniformLocation("projectionMatrix");
 	
 	
 }
