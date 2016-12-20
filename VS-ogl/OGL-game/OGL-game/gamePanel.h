@@ -12,7 +12,11 @@
 #include "modelTexture.h"
 #include "texturedModel.h"
 #include "Entity.h"
+#include "objLoader.h"
 #include "glm\vec3.hpp"
+#include "Camera.h"
+#include <vector>
+#include "Light.h"
 #define ScreenWidth	640
 #define ScreenHeight	480
 class gamePanel
@@ -51,6 +55,9 @@ private:
 	RawModel raw;
 	staticShader * myshader;
 	Entity myEntity;
+	Camera camera;
+	objLoader myobj;
+	Light mylight;
 
 
 };

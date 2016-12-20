@@ -1,3 +1,10 @@
-﻿  gamePanel.cpp
+﻿  Loader.cpp
+c:\users\leoh\documents\github\opengl\vs-ogl\ogl-game\ogl-game\loader.cpp(25): warning C4267: 'argument': conversion from 'size_t' to 'const long', possible loss of data
+c:\users\leoh\documents\github\opengl\vs-ogl\ogl-game\ogl-game\loader.cpp(26): warning C4267: 'argument': conversion from 'size_t' to 'const long', possible loss of data
+c:\users\leoh\documents\github\opengl\vs-ogl\ogl-game\ogl-game\loader.cpp(27): warning C4267: 'argument': conversion from 'size_t' to 'const long', possible loss of data
+c:\users\leoh\documents\github\opengl\vs-ogl\ogl-game\ogl-game\loader.cpp(28): warning C4267: 'argument': conversion from 'size_t' to 'const long', possible loss of data
+c:\users\leoh\documents\github\opengl\vs-ogl\ogl-game\ogl-game\loader.cpp(98): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+c:\users\leoh\documents\github\opengl\vs-ogl\ogl-game\ogl-game\loader.cpp(99): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+c:\users\leoh\documents\github\opengl\vs-ogl\ogl-game\ogl-game\loader.cpp(100): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   OGL-game.vcxproj -> C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\x64\Debug\OGL-game.exe
   OGL-game.vcxproj -> C:\Users\LeoH\Documents\GitHub\OpenGL\VS-ogl\OGL-game\x64\Debug\OGL-game.pdb (Full PDB)

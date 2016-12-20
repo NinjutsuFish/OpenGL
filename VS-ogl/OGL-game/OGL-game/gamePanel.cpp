@@ -65,6 +65,7 @@ void gamePanel::init() {
 			screenSurface = SDL_GetWindowSurface(window);
 			//context creation :))))
 			gContext = SDL_GL_CreateContext(window);
+
 			if (gContext == NULL) {
 				cout << "Context Creation FAILED :( not good" << endl;
 			} else {
@@ -92,50 +93,54 @@ void gamePanel::init() {
 				printf("IMG_Init: %s\n", IMG_GetError());
 				// handle error
 			}
-
+			//adddeptj
+			glEnable(GL_DEPTH_TEST);
+			glDepthFunc(GL_LESS);
 			//Update the surface
 			SDL_UpdateWindowSurface(window);
-			float vertices[] = { -0.5f, 0.5f, 0.0f,
-								-0.5f, -0.5f, 0.0f,
-								0.5f, -0.5f, 0.0f,
-								0.5f, 0.5f, 0.0f};
 			
-			GLuint indices[] = { 0,1,3,3,1,2 };
-			GLfloat textureCoords[] = { 0,0, //v0 
-										0,1, // v1
-										1,1, //v2
-										1,0 //v3
-			};
-			
-			cout << raw.getvaoid() << "Hai" << endl;;
-			
-
-			
-			raw = load.LoadToVAO((float *)&vertices, 12,(GLuint *)&indices,6,(GLfloat *)&textureCoords,8);
-			texture = modelTexture(load.loadTexture("test.png"));
+			raw = myobj.loadObjModel("dragon.obj", load);
+			texture = modelTexture(load.loadTexture("Green.png"));
+			texture.setReflectivity(100);
+			texture.setShineDamper(20);
 			texmodel = texturedModel(raw, texture);
 			
-			//shader last!!!
+			//shader last!!! but not entirely after go therender and entities.... <- this was a not made after i had wrote shader Last!
 			myshader = new staticShader();
+
 			render = Renderer(myshader);
-			myEntity = Entity(texmodel, glm::vec3(0, 0, -1), 0, 0, 0, 1);
+			
+			myEntity = Entity(texmodel, glm::vec3(0, 0, -25), 0, 0, 0, 1);
+		
+				
+			
+			
+			
+			
+			mylight = Light(glm::vec3(0,0,-20),glm::vec3(1,1,1));
 		}
 	}
 
 }
 //creation of render and update game....
 void gamePanel::updateGame() {
-	myEntity.IncreasePosition(0, 0, -0.02);
 	
+		myEntity.IncreaseRotation(0, 0.3, 0);
+	
+	//camera.rotateCamera(glm::vec3(0, 1, 0));
 }
 void gamePanel::renderGame() {
 	//DRAW MODELSSSSSSS
-	render.prepare();
-	myshader->start();
-	render.render(myEntity,myshader);
-	myshader->stop();
+	
+		render.prepare();
+		myshader->start();
+		myshader->loadLight(mylight);
+		myshader->loadShineVariales(texture.getShineDamper(), texture.getReflectivity());
+		render.render(myEntity, myshader, camera);
 
+		myshader->stop();
 
+	
 
 	
 	//swap buffers

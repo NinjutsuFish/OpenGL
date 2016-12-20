@@ -40,6 +40,13 @@ namespace Math {
 		matrix = glm::scale(matrix, glm::vec3{ scale, 1.0f });
 		return matrix;
 	}
-
+	glm::mat4 createViewMatrix(Camera camera) {
+		glm::mat4 matrix = glm::mat4(1.0f);
+		matrix = glm::rotate(matrix, toRadians(camera.getPitch()), {1,0,0});
+		matrix = glm::rotate(matrix, toRadians(camera.getYaw()), { 0,1,0 });
+		matrix = glm::translate(matrix, -camera.getPostiton());
+		return matrix;
 }
+}
+
 

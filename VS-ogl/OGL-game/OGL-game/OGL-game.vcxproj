@@ -89,11 +89,14 @@
     <Text Include="vertexShader.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="gamePanel.h" />
+    <ClInclude Include="Light.h" />
     <ClInclude Include="Loader.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="modelTexture.h" />
+    <ClInclude Include="objLoader.h" />
     <ClInclude Include="RawModel.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="shaderProgramme.h" />
@@ -103,9 +106,11 @@
     <ClInclude Include="texturedModel.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="gamePanel.cpp" />
     <ClCompile Include="Loader.cpp" />
     <ClCompile Include="Math.cpp" />
+    <ClCompile Include="objLoader.cpp" />
     <ClCompile Include="OGL-game.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="shaderProgramme.cpp" />

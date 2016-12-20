@@ -18,6 +18,10 @@ public:
 		const GLuint * indices, const long numIndices,
 		const GLfloat *texcoords, const long numtexpoint);
 	GLuint loadTexture(std::string fileName);
+	RawModel LoadToVAO2(const std::vector<float>& Postition,
+		const std::vector<GLuint>& indices,
+		const std::vector<float>& texcoords,
+		const std::vector<float>& normcoords);
 
 
 

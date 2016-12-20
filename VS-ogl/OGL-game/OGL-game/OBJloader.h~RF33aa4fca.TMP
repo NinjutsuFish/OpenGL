@@ -1,0 +1,36 @@
+#pragma once
+#include "RawModel.h"
+#include <string.h>
+#include "Loader.h"
+#include <vector>
+#include <fstream>
+using namespace std;
+class OBJloader
+{
+public:
+	OBJloader();
+	~OBJloader();
+	RawModel loadObjModel(string fileName,Loader * loader);
+	//resource loader is back... again
+	const std::string ResourcePath(std::string& FilePath) {
+
+		std::fstream hFile;
+
+		std::string nfilepath = FilePath;
+
+		//search for file by going up file directory tree up to 5 times
+		int attempts = 0;
+
+		hFile.open(nfilepath.c_str(), std::ios::in);
+		while (!hFile.is_open() && attempts < 5) {
+			nfilepath = "../" + nfilepath;
+			attempts += 1;
+			hFile.open(nfilepath.c_str(), std::ios::in);
+		}
+
+		hFile.close();
+		std::cout << "final file path:" << nfilepath << "\n";
+		return nfilepath;
+	}
+};
+
